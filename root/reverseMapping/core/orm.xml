@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_0.xsd" version="2.0">
+    <package>
+        mwp.domain
+    </package>
+    <access>
+        PROPERTY
+    </access>
+    <entity class="Basedomain">
+        <table name="basedomain"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="amount">
+                <column name="amount"/>
+            </basic>
+            <basic name="billName">
+                <column name="billName"/>
+            </basic>
+            <basic name="billType">
+                <column name="billType"/>
+            </basic>
+            <basic name="createDate">
+                <column name="createDate"/>
+            </basic>
+            <basic name="dtype">
+                <column name="DTYPE" nullable="false" length="31"/>
+            </basic>
+            <basic name="endDate">
+                <column name="endDate"/>
+            </basic>
+            <basic name="havePay">
+                <column name="havePay"/>
+            </basic>
+            <basic name="mailDate">
+                <column name="mailDate"/>
+            </basic>
+            <basic name="startDate">
+                <column name="startDate"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="Bill">
+        <table name="bill"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="amount">
+                <column name="amount"/>
+            </basic>
+            <basic name="billName">
+                <column name="billName" nullable="false"/>
+            </basic>
+            <basic name="billNo">
+                <column name="billNo"/>
+            </basic>
+            <basic name="billType">
+                <column name="billType"/>
+            </basic>
+            <basic name="createDate">
+                <column name="createDate"/>
+            </basic>
+            <basic name="endDate">
+                <column name="endDate"/>
+            </basic>
+            <basic name="havePay">
+                <column name="havePay"/>
+            </basic>
+            <basic name="mailDate">
+                <column name="mailDate"/>
+            </basic>
+            <basic name="startDate">
+                <column name="startDate"/>
+            </basic>
+            <basic name="tenantId">
+                <column name="tenant_id"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="Haha">
+        <table name="haha"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="amount">
+                <column name="amount"/>
+            </basic>
+            <basic name="createDate">
+                <column name="createDate"/>
+            </basic>
+            <basic name="heheId">
+                <column name="heheId"/>
+            </basic>
+            <basic name="mailDate">
+                <column name="mailDate"/>
+            </basic>
+            <basic name="name">
+                <column name="name" nullable="false"/>
+            </basic>
+            <basic name="periodEnd">
+                <column name="periodEnd"/>
+            </basic>
+            <basic name="periodStart">
+                <column name="periodStart"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="Hahahehedto">
+        <table name="hahahehedto"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="description">
+                <column name="description"/>
+            </basic>
+            <basic name="name">
+                <column name="name"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="Hehe">
+        <table name="hehe"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="desciption">
+                <column name="desciption"/>
+            </basic>
+            <basic name="description">
+                <column name="description"/>
+            </basic>
+            <basic name="extend">
+                <column name="extend"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="Txbill">
+        <table name="txbill"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="amount">
+                <column name="amount"/>
+            </basic>
+            <basic name="billName">
+                <column name="billName" nullable="false"/>
+            </basic>
+            <basic name="billNo">
+                <column name="billNo"/>
+            </basic>
+            <basic name="billType">
+                <column name="billType"/>
+            </basic>
+            <basic name="createDate">
+                <column name="createDate"/>
+            </basic>
+            <basic name="endDate">
+                <column name="endDate"/>
+            </basic>
+            <basic name="mailDate">
+                <column name="mailDate"/>
+            </basic>
+            <basic name="startDate">
+                <column name="startDate"/>
+            </basic>
+            <basic name="tenantId">
+                <column name="tenant_id"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="User">
+        <table name="user"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="password">
+                <column name="password" nullable="false"/>
+            </basic>
+            <basic name="username">
+                <column name="username" nullable="false"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

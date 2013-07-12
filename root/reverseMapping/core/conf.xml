@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="usagewarning">
+    <property name="parent" value="${basedir}/.."/>
+	<property name="dbdriver" value="org.gjt.mm.mysql.Driver"/>
+	<property name="dburl" value="jdbc:mysql://localhost:3306/amp"/>
+    <property name="dbuser" value="root"/>
+    <property name="dbpass" value=""/>
+	<property name="mysql.loc" value="${parent}"/>
+    
+    <path id="classpath" description="The classpath to use for compiling and running">
+        <pathelement path="${parent}"/>
+        <fileset dir="${parent}"> 
+            <include name="lib/openjpa-all-*.jar"/>
+        </fileset>  <!-- basedir -->
+		<fileset dir="${mysql.loc}">
+            <include name="lib/mysql*.jar"/>
+        </fileset>
+    </path>
+	
+    <target name="usagewarning">
+        <fail>
+           Please traverse to a sub-directory, like hellojpa, and run "ant" from there.
+        </fail>
+    </target>
+
+    <target name="init" depends="init:discover, init:windows, init:unix">
+    </target>
+    <target name="init:discover">
+        <condition property="isWindows">
+            <os family="windows"/>
+        </condition>
+    </target>
+    <target name="init:windows" if="isWindows">
+        <property name="platform.script.ext" value=".bat"/>
+    </target>
+    <target name="init:unix" unless="isWindows">
+        <property name="platform.script.ext" value=""/>
+    </target>
+
+    <target name="all" depends="init">
+        <exec dir="${basedir}/reversemapping" executable="ant${platform.script.ext}"/>
+    </target>
+
+    <target name="clean" depends="pre-clean"
+        description="Clean up compiled files and generated database files">
+        <delete includeemptydirs="yes">
+            <fileset dir="${basedir}">
+                <include name="*.class"/>
+                <include name="*.log"/>
+                <include name="${example}-database/**/*"/>
+                <include name="${example}-database"/>
+            </fileset>
+        </delete>
+    </target>
+
+
+</project>
+

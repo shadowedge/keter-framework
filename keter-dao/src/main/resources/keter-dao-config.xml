@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!-- <context:component-scan base-package="kk*" /> -->
+    <bean id="kkDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close"> 
+		<property name="driverClass">
+			<value>${db.driverClass}</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${db.url}</value>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="c3p0.acquire_increment">5</prop>
+				<prop key="c3p0.idle_test_period">100</prop>
+				<prop key="c3p0.max_size">100</prop>
+				<prop key="c3p0.max_statements">0</prop>
+				<prop key="c3p0.min_size">10</prop>
+				<prop key="user">${db.user}</prop>
+				<prop key="password">${db.password}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="kkDataSource" />
+	    <property name="packagesToScan">
+			<list>
+				<value>${keter.domain}</value>
+			</list>
+	    </property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.hibernate.dialect}</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.hbm2ddl.auto">${db.hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${db.hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${db.hibernate.format_sql}</prop>
+			</props>
+		</property>
+	</bean>
+	
+		<!-- <properties>
+			<property name="hibernate.cache.region.factory_class">
+            	net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory
+            </property>
+            <property name="hibernate.cache.use_second_level_cache">true</property>
+            <property name="hibernate.cache.use_query_cache">true</property>
+		</properties> -->
+	
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager"/>
+</beans>
