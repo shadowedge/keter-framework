@@ -11,4 +11,9 @@
     <import resource="classpath*:keter-service-config.xml" />
 	<!-- Any configuration of the service Module goes there -->
     <context:component-scan base-package="keter*" />
+    
+    <!-- 初始化系统数据 -->
+	<bean name="dbInitializer" class="keter.web.util.DbInit"/>
+	<!-- 全局异常拦截器 -->  
+    <bean id="exceptionResolver" class="keter.web.handler.KeterExceptionHandler"/>
 </beans>
