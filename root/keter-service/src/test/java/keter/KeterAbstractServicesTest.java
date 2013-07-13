@@ -10,5 +10,5 @@ import org.springframework.transaction.annotation.Transactional;
 @TransactionConfiguration(defaultRollback = false)
 @ContextConfiguration(locations = { "/test/kk-service-config-test.xml" })
 @Transactional
-public abstract class KkAbstractServicesTest {
+public abstract class KeterAbstractServicesTest {
 }

@@ -6,8 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-	<!-- <context:component-scan base-package="kk*" /> -->
-    <bean id="kkDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+    <bean id="keterDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close"> 
 		<property name="driverClass">
 			<value>${db.driverClass}</value>
@@ -29,7 +28,7 @@
 	</bean>
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="kkDataSource" />
+		<property name="dataSource" ref="keterDataSource" />
 	    <property name="packagesToScan">
 			<list>
 				<value>${keter.domain}</value>

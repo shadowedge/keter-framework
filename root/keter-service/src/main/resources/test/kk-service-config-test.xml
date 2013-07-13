@@ -9,8 +9,8 @@
 	<!-- 使用测试数据源 -->
 	<context:property-placeholder location="test/db-hsql.properties" />
 	
-    <context:component-scan base-package="kk*" />
+    <context:component-scan base-package="keter*" />
 	
 	<!-- 使用正式环境下的services-config配置 -->
-	<import resource="classpath*:kk-service-config.xml" /> 
+	<import resource="classpath*:keter-service-config.xml" /> 
 </beans>
