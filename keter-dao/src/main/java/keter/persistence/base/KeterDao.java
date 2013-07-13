@@ -3,7 +3,7 @@ package keter.persistence.base;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract interface KkDao<Entity> {
+public abstract interface KeterDao<Entity> {
 
 	public abstract void persist(Entity paramEntity);
 

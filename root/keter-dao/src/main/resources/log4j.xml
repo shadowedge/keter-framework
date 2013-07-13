@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy/MM/dd-HH:mm:ss}:%-5p >> %-C{1} %x - %m%n" />
+            <!-- <param name="ConversionPattern" value="[%-20t] >> %-6p  >> %-14C{1} >> %x - %m%n" /> -->
+            <!-- %d{yyyy/MM/dd-HH:mm:ss} >> %5p >> %t >> %l >> %m%n" -->
+        </layout>
+    </appender>
+    
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" >
+    	<level value="TRACE" />
+    </logger>
+ 
+
+    <logger name="test">
+        <level value="INFO" />
+    </logger>
+    
+    <root>
+        <level value="error" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+    
+</log4j:configuration>

@@ -15,17 +15,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-abstract public class KkAbstractDao<Entity> implements KkDao<Entity> {
+abstract public class KeterAbstractDao<Entity> implements KeterDao<Entity> {
 	/**
 	 * Logger for this class
 	 */
 	private static final Logger logger = LoggerFactory
-			.getLogger(KkAbstractDao.class);
+			.getLogger(KeterAbstractDao.class);
 
 	private final Class<Entity> entityClass;
 
 	@SuppressWarnings("unchecked")
-	public KkAbstractDao() {
+	public KeterAbstractDao() {
 		this.entityClass = ClazzUtil.getSuperClassGenricType(this.getClass());
 	}
 

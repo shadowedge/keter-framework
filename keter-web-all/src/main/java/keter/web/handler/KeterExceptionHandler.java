@@ -10,11 +10,11 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
-public class ExceptionHandler implements HandlerExceptionResolver {
+public class KeterExceptionHandler implements HandlerExceptionResolver {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = LoggerFactory.getLogger(ExceptionHandler.class);
+	private static final Logger logger = LoggerFactory.getLogger(KeterExceptionHandler.class);
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
