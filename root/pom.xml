@@ -17,7 +17,7 @@
   <modules>
 		<module>keter-dao</module>
 		<module>keter-service</module>
-    	<module>keter-web</module>
+    	<module>keter-web-all</module>
   </modules>
 
 	<properties>
