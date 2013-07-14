@@ -2,6 +2,7 @@ package keter.org;
 
 import junit.framework.Assert;
 import keter.KeterAbstractPersistenceTest;
+import keter.domain.Authority;
 import keter.domain.User;
 import keter.persistence.org.UserDao;
 
@@ -32,10 +33,12 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 
 	@Test
 	public void test() {
+		logger.info("====开始测试====");
 		User u = new User();
 		u.setAccount("gu");
 		u.setUsername("顾");
 		u.setPassword("pwd");
+		u.addAuthority(Authority.ADMIN);
 		//持久化：实体
 		u = dao.persistEntity(u);
 		
@@ -43,6 +46,7 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		u1.setAccount("gu1");
 		u1.setUsername("顾1");
 		u1.setPassword("pwd");
+		u1.addAuthority(Authority.USER);
 		//持久化
 		dao.persist(u1);
 		
@@ -51,7 +55,11 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		// 查询：特定
 		Assert.assertEquals("顾", dao.findById(u.getId()).getUsername());
 		// 查询：特定
-		 Assert.assertEquals("顾", dao.findByAccount("gu").getUsername());
+		Assert.assertTrue(dao.findById(u.getId()).getAuthorities().contains(Authority.ADMIN));
+		// 查询：特定
+		Assert.assertEquals("顾", dao.findByAccount("gu").getUsername());
+		 
+		
 
 		//修改
 		u.setUsername("杨");
