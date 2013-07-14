@@ -45,6 +45,8 @@ abstract public class KeterAbstractDao<Entity> implements KeterDao<Entity> {
 	@Override
 	public void persist(Entity entity) {
 		session.persist(entity);
+		//不写flush会导致级联表数据无法写入
+		session.flush();
 	}
 
 	@Override
