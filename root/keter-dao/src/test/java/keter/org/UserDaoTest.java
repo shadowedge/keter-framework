@@ -2,9 +2,9 @@ package keter.org;
 
 import junit.framework.Assert;
 import keter.KeterAbstractPersistenceTest;
+import keter.dao.org.UserDao;
 import keter.domain.Authority;
 import keter.domain.User;
-import keter.persistence.org.UserDao;
 
 import org.junit.After;
 import org.junit.Before;

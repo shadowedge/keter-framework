@@ -1,8 +1,8 @@
 package keter.web.util;
 
+import keter.dao.org.UserDao;
 import keter.domain.Authority;
 import keter.domain.User;
-import keter.persistence.org.UserDao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

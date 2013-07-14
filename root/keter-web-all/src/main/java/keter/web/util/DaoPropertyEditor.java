@@ -2,7 +2,7 @@ package keter.web.util;
 
 import java.beans.PropertyEditorSupport;
 
-import keter.persistence.base.KeterDao;
+import keter.dao.base.KeterDao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

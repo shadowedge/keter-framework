@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
+import keter.dao.org.UserDao;
 import keter.domain.Authority;
 import keter.domain.User;
-import keter.persistence.org.UserDao;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

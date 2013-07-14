@@ -1,6 +1,6 @@
 package keter.web.security;
 
-import keter.persistence.org.UserDao;
+import keter.dao.org.UserDao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

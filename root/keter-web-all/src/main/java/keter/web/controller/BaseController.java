@@ -1,7 +1,7 @@
 package keter.web.controller;
 
+import keter.dao.base.Pagination;
 import keter.domain.User;
-import keter.persistence.base.Pagination;
 import keter.web.routes.RestfulRoutes;
 import keter.web.routes.Router;
 
