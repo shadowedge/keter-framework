@@ -31,7 +31,8 @@
 		<property name="dataSource" ref="keterDataSource" />
 	    <property name="packagesToScan">
 			<list>
-				<value>${keter.domain}</value>
+				<!-- <value>${keter.domain}</value> -->
+				<value>keter.domain</value>
 			</list>
 	    </property>
 		<property name="hibernateProperties">
