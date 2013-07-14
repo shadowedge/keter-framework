@@ -1,8 +1,8 @@
-package keter.persistence.org.impl;
+package keter.dao.org.impl;
 
+import keter.dao.base.KeterAbstractDao;
+import keter.dao.org.UserDao;
 import keter.domain.User;
-import keter.persistence.base.KeterAbstractDao;
-import keter.persistence.org.UserDao;
 
 import org.springframework.stereotype.Repository;
 

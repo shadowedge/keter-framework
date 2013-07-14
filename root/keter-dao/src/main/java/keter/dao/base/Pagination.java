@@ -1,5 +1,5 @@
 
-package keter.persistence.base;
+package keter.dao.base;
 
 
 /**

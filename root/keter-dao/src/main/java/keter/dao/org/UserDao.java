@@ -1,7 +1,7 @@
-package keter.persistence.org;
+package keter.dao.org;
 
+import keter.dao.base.KeterDao;
 import keter.domain.User;
-import keter.persistence.base.KeterDao;
 
 public interface UserDao extends KeterDao<User> {
 	

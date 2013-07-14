@@ -1,4 +1,4 @@
-package keter.persistence.base;
+package keter.dao.base;
 
 import java.io.Serializable;
 import java.util.List;
