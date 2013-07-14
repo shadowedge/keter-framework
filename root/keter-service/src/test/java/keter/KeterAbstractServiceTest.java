@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(defaultRollback = false)
-@ContextConfiguration(locations = { "/test/kk-service-config-test.xml" })
+@ContextConfiguration(locations = { "/keter-service-config-test.xml" })
 @Transactional
-public abstract class KeterAbstractServicesTest {
+public abstract class KeterAbstractServiceTest {
 }

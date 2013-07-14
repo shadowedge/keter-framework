@@ -58,9 +58,7 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		Assert.assertTrue(dao.findById(u.getId()).getAuthorities().contains(Authority.ADMIN));
 		// 查询：特定
 		Assert.assertEquals("顾", dao.findByAccount("gu").getUsername());
-		 
 		
-
 		//修改
 		u.setUsername("杨");
 		dao.merge(u);
@@ -70,6 +68,4 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		dao.delete(u.getId(),u1.getId());
 		Assert.assertEquals(0, dao.findAll().size());
 	}
-	
-//	main
 }
