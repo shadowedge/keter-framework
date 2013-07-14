@@ -10,5 +10,5 @@
 	<!-- Import the other classes -->
     <import resource="classpath*:keter-dao-config.xml" />
 	<!-- Any configuration of the service Module goes there -->
-    <!-- <context:component-scan base-package="kk*" /> -->
+    <context:component-scan base-package="keter*" />
 </beans>
