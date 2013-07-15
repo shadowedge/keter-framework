@@ -5,23 +5,28 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import keter.util.ArrayUtil;
+import keter.util.ClazzUtil;
 //import keter.util.ClazzUtil;
 
 @Transactional
 public abstract class KeterAbstractDao<E> implements KeterDao<E> {
+	
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = LoggerFactory.getLogger(KeterAbstractDao.class);
 
 	private Class<E> entityClass;
 
+	@SuppressWarnings("unchecked")
 	protected KeterAbstractDao() {
-		// this.entityClass = E;
-	}
-
-	protected KeterAbstractDao(Class<E> entityClass) {
-		this.entityClass = entityClass;
+		this.entityClass = ClazzUtil.getSuperClassGenricType(this.getClass());
 	}
 
 	@Autowired
@@ -156,11 +161,7 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 //
 // @Transactional("txManager")
 // abstract public class KeterAbstractDao<Entity> implements KeterDao<Entity> {
-// /**
-// * Logger for this class
-// */
-// private static final Logger logger = LoggerFactory
-// .getLogger(KeterAbstractDao.class);
+
 //
 // private final Class<Entity> entityClass;
 //
