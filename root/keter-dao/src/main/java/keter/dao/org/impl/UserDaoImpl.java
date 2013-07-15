@@ -10,10 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("userDao")
 public class UserDaoImpl extends KeterAbstractDao<User> implements UserDao {
 	
-	protected UserDaoImpl() {
-		super(User.class);
-	}
-
 	@Override
 	public User findByAccount(String account){
 		return getSingleResult(
