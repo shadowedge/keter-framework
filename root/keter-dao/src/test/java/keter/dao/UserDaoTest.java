@@ -33,14 +33,15 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 
 	@Test
 	public void test() {
+		dao.findAll();
 		logger.info("====开始测试====");
 		User u = new User();
 		u.setAccount("gu");
 		u.setUsername("顾");
 		u.setPassword("pwd");
 		u.addAuthority(Authority.ADMIN);
-		//持久化：实体
-		u = dao.persistEntity(u);
+		//持久化
+		dao.saveOrUpdate(u);
 		
 		User u1 = new User();
 		u1.setAccount("gu1");
@@ -48,24 +49,37 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		u1.setPassword("pwd");
 		u1.addAuthority(Authority.USER);
 		//持久化
-		dao.persist(u1);
+		dao.saveEntity(u1);
 		
-		// 查询：全部
-		Assert.assertEquals(2, dao.findAll().size());
 		// 查询：特定
 		Assert.assertEquals("顾", dao.findById(u.getId()).getUsername());
+		
 		// 查询：特定
+		Assert.assertEquals("gu", dao.findByAccount(u.getAccount()).getAccount());
+				
+		// 查询：全部
+		Assert.assertEquals(2, dao.findAll().size());
+		
+		// 查询：权限（关联）
 		Assert.assertTrue(dao.findById(u.getId()).getAuthorities().contains(Authority.ADMIN));
+		
+		// 修改
+		u.setUsername("杨");
+		dao.saveOrUpdate(u);
+		Assert.assertEquals("杨", dao.findById(u.getId()).getUsername());
+		
+		// 删除
+		logger.info("begin delete:");
+		dao.delete(u);
+		Assert.assertEquals(1, dao.findAll().size());
+
+		/*
+		
 		// 查询：特定
 		Assert.assertEquals("顾", dao.findByAccount("gu").getUsername());
 		
-		//修改
-		u.setUsername("杨");
-		dao.merge(u);
-		Assert.assertEquals("杨", dao.findById(u.getId()).getUsername());
-
-		// 删除
-		dao.delete(u.getId(),u1.getId());
-		Assert.assertEquals(0, dao.findAll().size());
+		
+		
+		*/
 	}
 }

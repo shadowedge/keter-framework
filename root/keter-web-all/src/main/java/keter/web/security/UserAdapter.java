@@ -3,7 +3,7 @@ package keter.web.security;
 import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
-
+ 
 import keter.dao.org.UserDao;
 import keter.domain.Authority;
 import keter.domain.User;

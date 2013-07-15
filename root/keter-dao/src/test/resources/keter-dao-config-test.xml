@@ -8,9 +8,17 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <!-- 模拟正式环境 -->
     <context:component-scan base-package="keter*" />
-    <!-- 使用测试环境下的数据源配置 -->    
-	<context:property-placeholder location="db-hsql.properties" ignore-unresolvable="true"/>
-	<context:property-placeholder location="classpath:keter-domain.properties" ignore-unresolvable="true"/>
-	<!-- 使用正式环境下的persitence-config配置 -->
-	<import resource="classpath*:keter-dao-config.xml" /> 
+    <!-- 使用测试环境下的数据源配置 --> 
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+            	<!-- 可以引入多个配置文件且不会忽略错误 -->
+                <value>classpath:db-hsql.properties</value>
+                <value>classpath:keter-domain.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 使用正式环境下的dao-config配置 -->
+	<import resource="classpath*:keter-dao-config.xml" />       
 </beans>

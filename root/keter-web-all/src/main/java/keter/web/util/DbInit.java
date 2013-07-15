@@ -41,14 +41,14 @@ public class DbInit implements ApplicationListener<ContextRefreshedEvent> {
 		admin.setUsername("管理员");
 		admin.setPassword("1");
 		admin.addAuthority(Authority.ADMIN);
-		userDao.persist(admin);
+		userDao.saveOrUpdate(admin);
 		
 		User user = new User();
 		user.setAccount("user");
 		user.setUsername("用户");
 		user.setPassword("1");
 		user.addAuthority(Authority.USER);
-		userDao.persist(user);
+		userDao.saveOrUpdate(user);
 		alreadyInitialized = true;
 		logger.info("系统数据初始化完毕！");
 	}

@@ -22,7 +22,7 @@ public class UserService {
 	
 	public void add(User user){
 		logger.info("add user");
-		userDao.persist(user);
+		userDao.saveOrUpdate(user);
 	}
 	
 	public List<User> all(){

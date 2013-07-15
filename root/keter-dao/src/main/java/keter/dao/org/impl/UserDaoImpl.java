@@ -5,9 +5,14 @@ import keter.dao.org.UserDao;
 import keter.domain.User;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository("userDao")
 public class UserDaoImpl extends KeterAbstractDao<User> implements UserDao {
+	
+	protected UserDaoImpl() {
+		super(User.class);
+	}
 
 	@Override
 	public User findByAccount(String account){
