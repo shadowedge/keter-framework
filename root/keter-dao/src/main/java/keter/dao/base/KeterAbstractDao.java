@@ -22,7 +22,7 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 	 */
 	private static final Logger logger = LoggerFactory.getLogger(KeterAbstractDao.class);
 
-	private Class<E> entityClass;
+	private final Class<E> entityClass;
 
 	@SuppressWarnings("unchecked")
 	protected KeterAbstractDao() {
@@ -31,7 +31,7 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	public Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
 	}
@@ -69,20 +69,6 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 
 	/**
 	 * <p>
-	 * Method ：persistEntity
-	 * <p>
-	 * Description : 功能描述
-	 * 
-	 * @param entity
-	 * @return
-	 * @see keter.dao.base.KeterDao#persistEntity(java.lang.Object)
-	 */
-	public E persistEntity(E entity) {
-		return null;
-	}
-
-	/**
-	 * <p>
 	 * Method ：findAll
 	 * <p>
 	 * Description : 功能描述
@@ -90,6 +76,7 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 	 * @return
 	 * @see keter.dao.base.KeterDao#findAll()
 	 */
+	@Override
 	public List<E> findAll() {
 		return getCurrentSession().createCriteria(entityClass).list();
 	}
@@ -97,6 +84,24 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 	protected <T> T[] wrap(T... objects) {
 		 return ArrayUtil.wrap(objects);
     }
+	
+	
+	/**
+	 * Executes query with given parameters and returns a list results.
+	 * Parameters are passed in order of their posiion in parameters array.
+	 * 
+	 * @param sqlQuery
+	 *            query to execute
+	 * @param parameters
+	 *            parameters to pass to the query
+	 * @return single result from query execution
+	 */
+	@SuppressWarnings("unchecked")
+	protected List<E> getResultList(String sqlQuery, String[] names, Object[] parameters) {
+		Query query = getCurrentSession().createQuery(sqlQuery);
+		setQueryParameters(query, names, parameters);
+		return (List<E>) query.list();
+	}
 	
 	/**
 	 * Executes query with given parameters and returns a single result.
@@ -159,46 +164,6 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 	// }
 
 //
-// @Transactional("txManager")
-// abstract public class KeterAbstractDao<Entity> implements KeterDao<Entity> {
-
-//
-// private final Class<Entity> entityClass;
-//
-// @SuppressWarnings("unchecked")
-// public KeterAbstractDao() {
-// this.entityClass = ClazzUtil.getSuperClassGenricType(this.getClass());
-// }
-//
-// private SessionFactory sessionFactory;
-// private Session session;
-//
-// public SessionFactory getSessionFactory() {
-// return sessionFactory;
-// }
-//
-// @Autowired
-// public void setSessionFactory(SessionFactory sessionFactory) {
-// this.sessionFactory = sessionFactory;
-// // session = getSessionFactory().openSession();
-// // this.sessionFactory.openSession();
-// session = getSessionFactory().getCurrentSession();
-// }
-//
-// @Override
-// public void persist(Entity entity) {
-// session.persist(entity);
-// //不写flush会导致级联表数据无法写入
-// session.flush();
-// }
-//
-// @Override
-// public Entity persistEntity(Entity entity) {
-// session.persist(entity);
-// session.flush();
-// return entity;
-// }
-//
 // @Override
 // public void remove(Entity entity) {
 // // session = getSessionFactory().getCurrentSession();
@@ -256,23 +221,7 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 // return session.createCriteria(entityClass).list();
 // }
 //
-// /**
-// * Executes query with given parameters and returns a list results.
-// * Parameters are passed in order of their posiion in parameters array.
-// *
-// * @param sqlQuery
-// * query to execute
-// * @param parameters
-// * parameters to pass to the query
-// * @return single result from query execution
-// */
-// @SuppressWarnings("unchecked")
-// protected List<Entity> getResultList(String sqlQuery, String[] names,
-// Object[] parameters) {
-// Query query = session.createQuery(sqlQuery);
-// setQueryParameters(query, names, parameters);
-// return (List<Entity>) query.list();
-// }
+
 //
  
 //
@@ -291,30 +240,6 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 // }
 //
 
-//
-// /**
-// * Returns single query result with positional parameters.
-// *
-// * @param query
-// * query to execute
-// * @param parameters
-// * parameters to pass to query
-// * @return single query result
-// */
-// protected Entity getSingleResult(String query, Object... parameters) {
-// return getSingleResult(query, null, parameters);
-// }
-//
-// /**
-// * Returns single query result with no parameters.
-// *
-// * @param query
-// * query to execute
-// * @return single query result
-// */
-// protected Entity getSingleResult(String query) {
-// return getSingleResult(query, null, null);
-// }
 //
 // /**
 // * Returns list of query results with positional parameters.
