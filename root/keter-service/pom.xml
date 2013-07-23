@@ -15,7 +15,6 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>keter-dao</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 		<build>
@@ -33,5 +32,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

@@ -22,9 +22,8 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>keter-service</artifactId>
-			<version>${project.version}</version>
 		</dependency>
-
+		
 		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
