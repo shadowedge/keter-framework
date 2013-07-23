@@ -15,6 +15,18 @@
 	<scm>
 		<url>https://github.com/shadowedge/keter-framework</url>
 	</scm>
+	<developers>
+		<developer>
+			<id>shadowedge</id>
+			<name>gulx</name>
+			<email>gulixing@msn.com</email>
+		</developer>
+		<developer>
+			<id>oscar</id>
+			<name>YangM</name>
+			<email></email>
+		</developer>
+	</developers>
 	<modules>
 		<module>keter-dao</module>
 		<module>keter-service</module>
