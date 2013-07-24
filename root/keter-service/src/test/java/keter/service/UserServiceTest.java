@@ -4,11 +4,12 @@ package keter.service;
  * 版权所有。     
  */
 
-import junit.framework.Assert;
 import keter.KeterAbstractServiceTest;
 import keter.domain.User;
 
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,6 @@ public class UserServiceTest extends KeterAbstractServiceTest {
 		user.setUsername("我");
 		user.setPassword("1");
 		service.add(user);
-		Assert.assertEquals(1,service.all().size());
+		Assert.assertThat(1, is(service.all().size()));
 	}
-	
 }
