@@ -1,6 +1,6 @@
 start hsqldb.bat
 
-pause;
+pause; 
 
 java -classpath hsqldb.jar org.hsqldb.util.DatabaseManager -url jdbc:hsqldb:hsql://localhost
 

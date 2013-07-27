@@ -10,10 +10,11 @@
 	<!-- Import the other classes -->
     <import resource="classpath*:keter-service-config.xml" />
 	<!-- Any configuration of the service Module goes there -->
-    <context:component-scan base-package="keter.web" />
+    <!-- "[包名]*"的形式在容器下正式发布时会导致包无法正确扫描 -->
+    <context:component-scan base-package="keter" />
     
     <!-- 初始化系统数据 -->
-	<!-- <bean name="dbInitializer" class="keter.web.util.DbInit"/> -->
+	<bean name="dbInitializer" class="keter.web.util.DbInit"/>
 
 	<!-- 全局异常拦截器 -->  
     <bean id="exceptionResolver" class="keter.web.handler.KeterExceptionHandler"/>
