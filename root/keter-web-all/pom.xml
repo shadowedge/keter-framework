@@ -23,13 +23,6 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>keter-service</artifactId>
 		</dependency>
-		
-		<!-- MySQL -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.16</version>
-		</dependency>
 
 		<!-- Spring -->
 		<dependency>

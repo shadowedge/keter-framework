@@ -18,15 +18,13 @@ public class PathUtil {
 	// 拦截字符串: 用于对系统路径进行有效的截取。
 	private static String interceptorString;
 	// 平台系统路径： 即所需的 Srping 公共配置文件所在路径
-	private static String sysConfigPath;
+	private static String targetPath;
 
 	/**
 	 *  合成配置文件所在的路径
 	 */
 	private static void initSystemPath() {
 		classPath = decodePath(ClassLoader.getSystemResource("").toString());
-		interceptorString = "/classes";
-		sysConfigPath = classPath.substring(0, classPath.lastIndexOf(interceptorString)) + "/conf/";
 	}
 
 	/**
@@ -46,50 +44,27 @@ public class PathUtil {
 		return pathDecodeded;
 	}
 
+	/**
+	 * <p>Method ：getProjectRoot
+	 * <p>Description : 得到maven工程的根目录
+	 * @return 
+	 * @author  gulixing@msn.com
+	 * @version 1.0.0
+	 */
+	public static String getProjectRoot() {
+		initSystemPath();
+		interceptorString = "/target";//file:/E:/git/keter/keter-project/web/target/test-classes/
+		targetPath = classPath.substring(0, classPath.lastIndexOf(interceptorString));
+		return targetPath;
+	}
+	
 	public static String[] getConfigPath() {
 		initSystemPath();
 		return new String[]{
-				sysConfigPath + "dao-*.xml",
-				sysConfigPath + "datasource-*.xml",
-				sysConfigPath + "transaction-*.xml",
+				targetPath + "dao-*.xml",
+				targetPath + "datasource-*.xml",
+				targetPath + "transaction-*.xml",
 		};
-	}
-
-	/**
-	 * <p>传入模块路径，结合系统路径生成配置路径</p>
-	 *
-	 * @param moudlePath
-	 * @return
-	 * @author: 顾力行 - gulixing@msn.com
-	 * @date: Created on Feb 5, 2009 9:17:39 AM
-	 */
-	public static String[] getConfigPath(String[] moudlePath) {
-		Validate.notNull(moudlePath, "模块目录不能为空！");
-		Validate.notEmpty(moudlePath, "模块目录不能为空！");
-
-		initSystemPath();
-		//将自定义的配置文件路径跟系统路径结合
-		String absolutePath[] = new String[moudlePath.length+getConfigPath().length];
-		int index = 0;
-		for (String path : moudlePath) {
-			//如果路径没有正确结尾，则补充结尾符号"/"
-			if(path.charAt(path.length()-1)!='/'){
-				path +="/";
-			}
-			// 合成配置文件实际路径
-			String moudleConfigPath = sysConfigPath + path;
-			absolutePath[index] = moudleConfigPath + "*.xml";
-			index++;
-		}
-
-		//将自定义的配置文件路径跟系统配置文件路径结合
-		System.arraycopy(getConfigPath(), 0, absolutePath, moudlePath.length, getConfigPath().length);
-//		System.out.println(absolutePath);
-		return absolutePath;
-	}
-
-	public static String[] getConfigPath(String moudlePath) {
-		return getConfigPath(new String[]{moudlePath});
 	}
 
 }
