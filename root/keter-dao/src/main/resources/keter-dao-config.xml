@@ -24,9 +24,9 @@
 			<props>
 				<prop key="c3p0.acquire_increment">5</prop>
 				<prop key="c3p0.idle_test_period">100</prop>
-				<prop key="c3p0.max_size">100</prop>
+				<prop key="c3p0.max_size">${db.pool.max_size}</prop>
 				<prop key="c3p0.max_statements">0</prop>
-				<prop key="c3p0.min_size">10</prop>
+				<prop key="c3p0.min_size">${db.pool.min_size}</prop>
 				<prop key="user">${db.user}</prop>
 				<prop key="password">${db.password}</prop>
 			</props>

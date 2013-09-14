@@ -68,6 +68,13 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.2</version>
 		</dependency>
+
+		<!-- dom4j -->
+		<dependency>
+			<groupId>maven</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.7-20060614</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
