@@ -78,6 +78,7 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 	 */
 	@Override
 	public List<E> findAll() {
+//		getCurrentSession().createCriteria(entityClass).g
 		return getCurrentSession().createCriteria(entityClass).list();
 	}
 	
@@ -90,7 +91,7 @@ public abstract class KeterAbstractDao<E> implements KeterDao<E> {
 	 * Executes query with given parameters and returns a list results.
 	 * Parameters are passed in order of their posiion in parameters array.
 	 * 
-	 * @param sqlQuery
+	 * @param sqlQueryQuery
 	 *            query to execute
 	 * @param parameters
 	 *            parameters to pass to the query

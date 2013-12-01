@@ -15,9 +15,8 @@ public abstract interface KeterDao<Entity> {
 	public abstract void deleteById(Long id);
 
 	public abstract Entity findById(Long id);
-
+	
 	public abstract List<Entity> findAll();
-
 }
 
 // package keter.dao.base;

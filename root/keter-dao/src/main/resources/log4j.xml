@@ -9,7 +9,7 @@
             <!-- %d{yyyy/MM/dd-HH:mm:ss} >> %5p >> %t >> %l >> %m%n" -->
         </layout>
     </appender>
-    
+    <!-- 使hibernate显示传递的参数 -->
     <logger name="org.hibernate.type.descriptor.sql.BasicBinder" >
     	<level value="TRACE" />
     </logger>
