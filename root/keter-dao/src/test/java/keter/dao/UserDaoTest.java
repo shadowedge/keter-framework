@@ -36,7 +36,7 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 
 	@Test
 	public void test() {
-		dao.findAll();
+//		dao.findAll();
 		logger.info("====开始测试====");
 		User u = new User();
 		u.setAccount("gu");
@@ -55,7 +55,13 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		dao.saveEntity(u1);
 		
 		// 查询：特定
+		logger.info("用户创建于:{}",dao.findById(u.getId()).getCreated());
+		logger.info("用户总数:{}",dao.findById(u.getId()).getTotal());
+//		logger.info("用户更新于:{}",dao.findById(u.getId()).getLastModified());
+		
 		assertThat("顾", is(dao.findById(u.getId()).getUsername()));
+//		assertThat(dao.findById(u.getId()).getTotal(),is(1));	
+
 		
 		// 查询：特定
 		Assert.assertThat("gu", is(dao.findByAccount(u.getAccount()).getAccount()));
@@ -70,6 +76,7 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		u.setUsername("杨");
 		dao.saveOrUpdate(u);
 		Assert.assertThat("杨",is(dao.findById(u.getId()).getUsername()));
+//		logger.info("用户最后更新于:{}",dao.findById(u.getId()).getLastModified());
 		
 		// 删除
 		logger.info("begin delete:");
