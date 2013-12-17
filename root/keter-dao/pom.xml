@@ -70,11 +70,11 @@
 		</dependency>
 
 		<!-- dom4j -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>maven</groupId>
 			<artifactId>dom4j</artifactId>
 			<version>1.7-20060614</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 	<build>
 		<plugins>

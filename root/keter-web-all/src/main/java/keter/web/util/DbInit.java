@@ -34,6 +34,8 @@ public class DbInit implements ApplicationListener<ContextRefreshedEvent> {
 		}
 		if (userDao.findAll().size() > 0) {
 			logger.info("系统已被初始化或用户数据已存在。");
+			//测试分页 结论：hibernate可以为mysql添加“limit”语句
+			userDao.findByAccount("haha");
 			return;
 		}
 		User admin = new User();
