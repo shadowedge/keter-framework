@@ -79,15 +79,15 @@ public class User {
 		this.getAddress().add(bid);
 	}
 
-	private String desc;
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+//	private String desc;
+//
+//	public String getDesc() {
+//		return desc;
+//	}
+//
+//	public void setDesc(String desc) {
+//		this.desc = desc;
+//	}
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CREATED", nullable = false, updatable = false)
@@ -95,7 +95,10 @@ public class User {
 
 	// FIXME:可以看见Sql但未生效
 	// @org.hibernate.annotations.Formula("(select count(*) from user)")
-	@org.hibernate.annotations.Formula("(select count(*) from user)")
+	//[注意]默认情况下，Linux下的MySql表名是区分大小写的（Windows下统一为小写）。
+	//因此直接写Sql必须保证大小写一致，否则容易出错
+	//
+	@org.hibernate.annotations.Formula("(select count(*) from User)")
 	private int total;
 
 	// FIXME:未生效
