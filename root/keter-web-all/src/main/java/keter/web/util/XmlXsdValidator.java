@@ -18,7 +18,7 @@ import java.io.File;
 *
 * @author leizhimin，2008-9-4 14:42:35
 */
-public class XMLValidator {
+public class XmlXsdValidator {
     public static void main(String[] args) {
         String xmlFileName = "E://git/keter/keter-project/web/src/main/webapp/WEB-INF/web.xml";
         String xsdFileName = "E://git/keter/keter-project/web/src/main/webapp/WEB-INF/xsd/web-app_2_5.xsd";

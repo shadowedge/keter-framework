@@ -19,11 +19,11 @@ import org.junit.Test;
  * @author  gulixing@msn.com
  * @version 1.0.0
  */
-public class JNDIDataSourceValidator {
+public class JndiDataSourceValidator {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = Logger.getLogger(JNDIDataSourceValidator.class);
+	private static final Logger logger = Logger.getLogger(JndiDataSourceValidator.class);
 	
 
 	@Test
