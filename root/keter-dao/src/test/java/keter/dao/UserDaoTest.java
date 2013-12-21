@@ -44,7 +44,7 @@ public class UserDaoTest extends KeterAbstractPersistenceTest {
 		u.setUsername("顾");
 		u.setPassword("pwd");
 		u.addAuthority(Authority.ADMIN);
-		u.setDesc("哈哈哈");
+//		u.setDesc("哈哈哈");
 		Address ads1 = new Address("根来彼方");
 		Address ads2 = new Address("万事屋");
 		u.addAddress(ads1);
